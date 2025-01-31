@@ -21,28 +21,37 @@ import {
 
 export default function Home() {
 
-  const [visible, setVisible] = useState(false);
-  const [action, setAction] = React.useState("");
-
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
-    mensagem: "",
+    message: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setSuccess(null);
+
     try {
-      const response = await axios.post("http://localhost:5000/send-email", formData);
-      setVisible(true);
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      setSuccess(data.message);
     } catch (error) {
-      alert("Erro ao enviar mensagem.");
-      console.error(error);
+      setSuccess("Erro ao enviar mensagem.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,16 +81,6 @@ export default function Home() {
 
   return (
     <div>
-      {visible ? (
-        <Modal isOpen={visible} onClose={() => setVisible(false)}>
-          <ModalContent>
-            <ModalHeader>Mensagem enviada com sucesso!</ModalHeader>
-            <ModalFooter>
-              <Button onClick={() => setVisible(false)}>Close</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      ) : null}
 
       <section id="sobremim" className="border flex items-center justify-center gap-4 max-lg:pt-12 max-md:flex-wrap">
         <div className="inline-block  sm:w-1/2 text-center justify-center">
@@ -268,7 +267,7 @@ export default function Home() {
                 name="username"
                 placeholder="Digite seu nome"
                 type="text"
-                value={formData.username}
+                value={formData.name}
                 onChange={handleChange}
               />
               <Input
@@ -286,7 +285,7 @@ export default function Home() {
                 name="mensagem"
                 placeholder="Digite sua mensagem"
                 className="mt-2"
-                value={formData.mensagem}
+                value={formData.message}
                 onChange={handleChange}
               />
               <div className="flex gap-2">
@@ -300,11 +299,7 @@ export default function Home() {
                 </Button>
 
               </div>
-              {action && (
-                <div className="text-small text-default-500">
-                  Action: <code>{action}</code>
-                </div>
-              )}
+
             </form>
           </Card>
 
