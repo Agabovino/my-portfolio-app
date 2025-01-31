@@ -277,7 +277,7 @@ export default function Home() {
 
       <section id="contato" className="border bg-[url('/images/bg-6.png')] bg-center bg-cover -z-20">
         <div className=" flex items-center justify-center">
-          <Card className="max-md:w-[85%] p-12 mb-24 mt-12 z-10 rounded-lg flex items-center justify-center shadow-md">
+          <Card className=" max-sm:w-[80%] px-12 py-6 mb-24 mt-12 z-10 rounded-lg flex items-center justify-center shadow-md">
             <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4 m-12">
               <Input
                 isRequired

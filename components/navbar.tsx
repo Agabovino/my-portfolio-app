@@ -36,11 +36,11 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <p className="font-bold text-inherit">UX/UI designer</p>
-            <p className="hidden xs:block">xs</p>
+            {/* <p className="hidden xs:block">xs</p>
             <p className="hidden sm:block">sm</p>
             <p className="hidden md:block">md</p>
             <p className="hidden lg:block">lg</p>
-            <p className="hidden xl:block">xl</p>
+            <p className="hidden xl:block">xl</p> */}
 
           </NextLink>
         </NavbarBrand>
