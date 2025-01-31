@@ -20,7 +20,7 @@ import {
 } from "@heroui/react";
 
 export default function Home() {
-
+  const [visible, setVisible] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,6 +47,7 @@ export default function Home() {
       });
 
       const data = await res.json();
+      setVisible(true);
       setSuccess(data.message);
     } catch (error) {
       setSuccess("Erro ao enviar mensagem.");
@@ -81,6 +82,17 @@ export default function Home() {
 
   return (
     <div>
+
+      {visible ? (
+        <Modal isOpen={visible} onClose={() => setVisible(false)}>
+          <ModalContent>
+            <ModalHeader>Mensagem enviada com sucesso!</ModalHeader>
+            <ModalFooter>
+              <Button onClick={() => setVisible(false)}>Close</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      ) : null}
 
       <section id="sobremim" className="border flex items-center justify-center gap-4 max-lg:pt-12 max-md:flex-wrap">
         <div className="inline-block  sm:w-1/2 text-center justify-center">
