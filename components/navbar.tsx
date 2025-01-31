@@ -36,7 +36,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <p className="font-bold text-inherit">UX/UI designer</p>
+            <p className="font-bold text-inherit"> Dev. Front-end & Designer UX/UI</p>
             {/* <p className="hidden xs:block">xs</p>
             <p className="hidden sm:block">sm</p>
             <p className="hidden md:block">md</p>

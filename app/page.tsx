@@ -20,6 +20,20 @@ import {
 } from "@heroui/react";
 
 export default function Home() {
+
+  const pdfUrl = "/assets/Currículo - Ágabo.pdf";
+
+
+  const handleDownload = () => {
+
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Currículo - Ágabo.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const [opened, setOpened] = useState(false)
   const [visible, setVisible] = useState(false)
   const [formData, setFormData] = useState({
@@ -66,18 +80,18 @@ export default function Home() {
         "Desenvolvimento de um site moderno e responsivo para o CT UFPB, destacando serviços, eventos e acesso fácil a informações acadêmicas",
     },
     {
-      img: '/images/image2.png',
+      img: '/images/image-17-remove-bg-io.png',
       id: "App esfirras",
       label: "App esfirras",
       content:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "Protótipo de aplicativo mobile para uma esfiharia, proporcionando uma experiência prática e intuitiva para os clientes realizarem pedidos de forma rápida e eficiente.",
     },
     {
-      img: '/images/image3.png',
-      id: "LimpaCorp",
-      label: "LimpaCorp",
+      img: '/images/Group8.png',
+      id: "Echo Clean",
+      label: "EchoClean",
       content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Desenvolvimento de um site moderno e funcional para a EchoClean, empresa especializada em higienização a seco de estofados em João Pessoa.",
     },
   ];
 
@@ -104,13 +118,9 @@ export default function Home() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac placerat metus, et condimentum est. Praesent tempor magna et quam vestibulum, mollis viverra eros iaculis. Duis nec tortor non sapien dictum facilisis.
           </div>
           <div className="pt-2 transition-transform transform hover:scale-102  hover:translate-y-[-5px]">
-            <Link
-              isExternal
-              className={buttonStyles({ variant: "bordered", radius: "full" })}
-              href="https://www.google.com.br"
-            >
+            <Button role="button" variant="ghost" onPress={handleDownload}>
               Baixar currículo
-            </Link>
+            </Button>
           </div>
         </div>
         <div className="flex max-md:w-[75%] md:w-1/2">
@@ -118,7 +128,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="sobremim" className=" md:p-12  border py-24 gap-6 flex items-center justify-center bg-[url('/images/3d-shapes-sky-tones-background-b.png')] bg-center bg-cover">
+      <section id="sobremim" className=" md:p-12 flex-col  border py-24 gap-6 flex items-center justify-center bg-[url('/images/3d-shapes-sky-tones-background-b.png')] bg-center bg-cover">
+        <h1 className={title({ color: "blue", size: "sm" })}>Área de atuação</h1>
+
         <div className=" max-md:w-1/2 flex items-center justify-center gap-6 my-8 max-md:flex-wrap">
           <Card isBlurred className="md:w-[100%] md:h-96 py-12 shadow-lg transition-transform transform hover:scale-102 hover:shadow-lg hover:translate-y-[-5px]">
             <div className="md:h-16 flex items-center justify-center overflow-visible ">
@@ -130,9 +142,9 @@ export default function Home() {
               />
             </div>
             <CardHeader className="flex-col text-center">
-              <h1 className={title({ class: "text-small", size: "xxs", color: "violet" })}>
+              <h2 className={title({ class: "sm", size: "xxs", color: "violet" })}>
                 Designer UI/UX
-              </h1>
+              </h2>
               <p className={subtitle({ class: "text-small" })}>Criando e mantendo interfaces de usuário intuitivas e experiências de usuário envolventes,
                 garantindo a facilidade de uso e a satisfação dos usuários finais.</p>
             </CardHeader>
@@ -147,9 +159,9 @@ export default function Home() {
               />
             </div>
             <CardHeader className="flex-col text-center">
-              <h1 className={title({ class: "text-small", size: "xxs", color: "violet" })}>
+              <h2 className={title({ class: "sm", size: "xxs", color: "violet" })}>
                 Mobile First
-              </h1>
+              </h2>
               <p className={subtitle({ class: "text-small" })}>Desenvolvendo e mantendo websites otimizados para dispositivos móveis,
                 garantindo que eles sejam responsivos e ofereçam uma experiência de usuário.</p>
             </CardHeader>
@@ -164,9 +176,9 @@ export default function Home() {
               />
             </div>
             <CardHeader className="flex-col text-center">
-              <h1 className={title({ class: "text-small", size: "xxs", color: "violet" })}>
+              <h2 className={title({ class: "sm", size: "xxs", color: "violet" })}>
                 Desenvolvimento Web
-              </h1>
+              </h2>
               <p className={subtitle({ class: "text-small" })}>Criando e mantendo websites, envolvendo tarefas como codificação, design e
                 construção de funcionalidades.</p>
             </CardHeader>
@@ -175,7 +187,8 @@ export default function Home() {
 
       </section>
 
-      <section id="portfolio" className="border items-center justify-center bg-[url('/images/bg-2.png')] bg-center bg-cover">
+      <section id="portfolio" className="border flex flex-col pt-12 items-center justify-center bg-[url('/images/bg-2.png')] bg-center bg-cover">
+        <h1 className={title({ color: "blue", size: "sm" })}>Experiências Profissionais</h1>
         <div className="flex items-center justify-center w-full flex-col my-12">
           <Tabs aria-label="Dynamic tabs" items={tabs}>
             {(item) => (
@@ -210,10 +223,10 @@ export default function Home() {
             <div><img className="" src="/images/design-smartphone.png" alt="" /></div>
           </div>
           <div className="flex w-2/3 max-sm:w-full flex-col text-center justify-center p-12 pb-24 items-center w-1/2  py-16">
-            <h2 className={title({ color: "blue", size: "xs" })}>
+            <h1 className={title({ color: "blue", size: "sm" })}>
               Tecnologias em alta no mercado
-            </h2>
-            <p className={subtitle({ class: "text-small" })}>Criando e mantendo websites, envolvendo tarefas como codificação, design e construção de funcionalidades.</p>
+            </h1>
+            <p className={subtitle({ class: "text-small" })}>Estou sempre atualizado com as tecnologias mais recentes, oferecendo soluções modernas e eficientes. Meu trabalho une design UI/UX e desenvolvimento, equilibrando estética e funcionalidade.</p>
             <div className="flex mt-12 grid grid-cols-4 gap-1 pb-12">
 
               <Tooltip content='Figma' color="secondary">
@@ -275,7 +288,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="border bg-[url('/images/bg-6.png')] bg-center bg-cover -z-20">
+      <section id="contato" className="flex flex-col items-center border pt-12 bg-[url('/images/bg-6.png')] bg-center bg-cover -z-20">
+        <h1 className={title({ color: "blue", size: "sm" })}>Se interessou?</h1>
         <div className=" flex items-center justify-center">
           <Card className=" max-sm:w-[80%] px-12 py-6 mb-24 mt-12 z-10 rounded-lg flex items-center justify-center shadow-md">
             <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4 m-12">
