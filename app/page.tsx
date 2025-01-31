@@ -110,12 +110,15 @@ export default function Home() {
       ) : null}
 
       <section id="sobremim" className="border flex items-center justify-center gap-4 max-lg:pt-12 max-md:flex-wrap">
-        <div className="inline-block  sm:w-1/2 text-center justify-center">
+        <div className="inline-block  sm:w-1/2 text-center justify-center p-6">
           <span className={title()}>Oi, eu sou &nbsp;</span>
           <span className={title({ color: "blue" })}>Ágabo Nascimento&nbsp;</span>
           <br />
           <div className={subtitle({ class: "mt-4" })}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac placerat metus, et condimentum est. Praesent tempor magna et quam vestibulum, mollis viverra eros iaculis. Duis nec tortor non sapien dictum facilisis.
+            Desenvolvedor e designer UX/UI com formação em Análise e Desenvolvimento de
+            Sistemas. Tenho experiência em desenvolvimento web e mobile, criação de wireframes
+            para interfaces de usuário e construção de websites responsivos utilizando React.js e Next.js.
+
           </div>
           <div className="pt-2 transition-transform transform hover:scale-102  hover:translate-y-[-5px]">
             <Button role="button" variant="ghost" onPress={handleDownload}>
