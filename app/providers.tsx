@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export interface ProvidersProps {
-  children: React.ReactNode; a
+  children: React.ReactNode;
   themeProps?: ThemeProviderProps;
 }
 
