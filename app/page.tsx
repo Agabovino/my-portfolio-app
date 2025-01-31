@@ -182,7 +182,7 @@ export default function Home() {
               <Tab className="flex items-center justify-center" key={item.id} title={item.label}>
                 <Card isBlurred className="max-md:w-[80%] md:w-[60%] lg:w-[50%] flex items-center justify-center">
                   <CardBody className="flex items-center justify-center">
-                    <img onClick={() => setOpened(true)} className="hover:cursor-pointer " src={item.img} alt="" />
+                    <div onClick={() => setOpened(true)}><img className="hover:cursor-pointer " src={item.img} alt="" /></div>
                     {opened ? (
                       <Modal placement="center" size="5xl" isOpen={opened} onClose={() => setOpened(false)}>
                         <ModalContent>
