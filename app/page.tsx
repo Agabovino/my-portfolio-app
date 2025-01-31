@@ -88,7 +88,7 @@ export default function Home() {
           <ModalContent>
             <ModalHeader>Mensagem enviada com sucesso!</ModalHeader>
             <ModalFooter>
-              <Button onClick={() => setVisible(false)}>Close</Button>
+              <Button onPress={() => setVisible(false)}>Close</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
@@ -276,7 +276,7 @@ export default function Home() {
                 errorMessage="Use um nome válido"
                 label="Nome"
                 labelPlacement="outside"
-                name="username"
+                name="name"
                 placeholder="Digite seu nome"
                 type="text"
                 value={formData.name}
@@ -294,7 +294,9 @@ export default function Home() {
                 onChange={handleChange}
               />
               <Textarea
-                name="mensagem"
+                isRequired
+                name="message"
+                type="message"
                 placeholder="Digite sua mensagem"
                 className="mt-2"
                 value={formData.message}
