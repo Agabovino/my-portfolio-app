@@ -3,13 +3,13 @@ import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import { Tabs, Tab } from "@heroui/react";
-import { Form, Input, Button, Tooltip, Textarea } from "@heroui/react";
+import { Input, Button, Tooltip, Textarea } from "@heroui/react";
 import React, { useState } from "react";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import axios from "axios";
+
 import {
   Modal,
   ModalContent,
@@ -20,6 +20,7 @@ import {
 } from "@heroui/react";
 
 export default function Home() {
+  const [opened, setOpened] = useState(false)
   const [visible, setVisible] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
@@ -88,7 +89,7 @@ export default function Home() {
           <ModalContent>
             <ModalHeader>Mensagem enviada com sucesso!</ModalHeader>
             <ModalFooter>
-              <Button onPress={() => setVisible(false)}>Close</Button>
+              <Button onPress={() => setVisible(false)}>fechar</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
@@ -117,7 +118,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className=" md:p-12  border py-24 gap-6 flex items-center justify-center bg-[url('/images/3d-shapes-sky-tones-background-b.png')] bg-center bg-cover">
+      <section id="sobremim" className=" md:p-12  border py-24 gap-6 flex items-center justify-center bg-[url('/images/3d-shapes-sky-tones-background-b.png')] bg-center bg-cover">
         <div className=" max-md:w-1/2 flex items-center justify-center gap-6 my-8 max-md:flex-wrap">
           <Card isBlurred className="md:w-[100%] md:h-96 py-12 shadow-lg transition-transform transform hover:scale-102 hover:shadow-lg hover:translate-y-[-5px]">
             <div className="md:h-16 flex items-center justify-center overflow-visible ">
@@ -174,16 +175,23 @@ export default function Home() {
 
       </section>
 
-      <section id="portfolio" className="border bg-[url('/images/bg-2.png')] bg-center bg-cover">
-        <div className="flex items-center w-full flex-col my-12">
+      <section id="portfolio" className="border items-center justify-center bg-[url('/images/bg-2.png')] bg-center bg-cover">
+        <div className="flex items-center justify-center w-full flex-col my-12">
           <Tabs aria-label="Dynamic tabs" items={tabs}>
             {(item) => (
-              <Tab key={item.id} title={item.label}>
-                <Card isBlurred className="flex items-center justify-center">
-                  <CardBody className=" flex items-center justify-center">
-                    <img className="max-w-[50dvw]" src={item.img} alt="" />
+              <Tab className="flex items-center justify-center" key={item.id} title={item.label}>
+                <Card isBlurred className="max-md:w-[80%] md:w-[60%] lg:w-[50%] flex items-center justify-center">
+                  <CardBody className="flex items-center justify-center">
+                    <img onClick={() => setOpened(true)} className="hover:cursor-pointer " src={item.img} alt="" />
+                    {opened ? (
+                      <Modal placement="center" size="5xl" isOpen={opened} onClose={() => setOpened(false)}>
+                        <ModalContent>
+                          <img className="" src={item.img} alt="" />
+                        </ModalContent>
+                      </Modal>
+                    ) : null}
                   </CardBody>
-                  <CardBody className={subtitle({ class: "text-sm", fullWidth: false })}>{item.content}</CardBody>
+                  <CardBody className={subtitle({ class: "text-sm", fullWidth: true })}>{item.content}</CardBody>
                 </Card>
               </Tab>
             )}

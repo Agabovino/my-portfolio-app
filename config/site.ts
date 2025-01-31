@@ -37,7 +37,7 @@ export const siteConfig = {
     },
     {
       label: "Portfolio",
-      href: "#portfolio",
+      href: "/#portfolio",
     },
     {
       label: "Formação",

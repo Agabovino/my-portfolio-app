@@ -1,3 +1,4 @@
+'use client'
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -14,6 +15,7 @@ import { Input } from "@heroui/input";
 import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -78,7 +80,23 @@ export const Navbar = () => {
           <GithubIcon className="text-default-500" />
         </Link>
         <ThemeSwitch />
-        <NavbarMenuToggle />
+
+        <Dropdown className="" backdrop="blur">
+          <DropdownTrigger>
+
+            <button className="flex justify-center "><img className="w-1/2" src="/icons/drag_handle_24dp_434343_FILL0_wght400_GRAD0_opsz24.png" alt="" /></button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Static Actions" variant="faded">
+
+            <DropdownItem href="/" key="inicio" >Início</DropdownItem>
+            <DropdownItem href="#sobremim" key="sobre" >Sobre mim</DropdownItem>
+            <DropdownItem href="#portfolio" key="portfolio" >Portfolio</DropdownItem>
+            <DropdownItem href="#formacao" key="formacao" >Formação</DropdownItem>
+            <DropdownItem href="#contato" key="contato">Contato</DropdownItem>
+
+          </DropdownMenu>
+        </Dropdown>
+
       </NavbarContent>
 
       <NavbarMenu>
